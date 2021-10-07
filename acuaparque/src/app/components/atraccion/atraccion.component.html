@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark d-flex justify-content-end">
+    <a [routerLink]="['/admin']">
+        <button class="btn btn-outline-success me-4" type="button">Administrador</button>
+    </a>
+    <button class="btn btn-outline-light me-4" type="button" (click)="conectar()">Conectar</button>
+</nav>
+<div class="container">
+    <div class="row  mt-5 mb-5">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Entrada Acuaparque de la caña</h5>
+                    <div class="text-center">
+                        <img src="assets/images/buy.png" style="object-fit: cover; width: 200px;">
+                        <p><b style="color: green;">Cantidad de fichas (Contrato): <span class="badge bg-success">{{
+                                    fichaContrato }}</span></b></p>
+                        <a [href]="_contract.rinkeby" target="_blank">
+                            <p> Dirección del contrato: &raquo; {{ _contract.addressContract }}</p>
+                        </a>
+                    </div>
+                    <p class="card-text mt-4 text-center fw-bold">Compra tu boleta aqui para entrar a las atracciones
+                    </p>
+                    <div class="d-flex justify-content-center mb-5">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <button class="btn btn-secondary" type="button" id="button-addon3"
+                                    (click)="decreaseTicket()">-</button>
+                                <input type="number" [(ngModel)]="ticket" class="form-control"
+                                    placeholder="Cantidad de boletas">
+                                <button class="btn btn-primary" type="button" id="button-addon2"
+                                    (click)="addTicket()">+</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-danger ms-5" (click)="buyTicket()">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mt-5 mb-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Información de la cuenta</h5>
+                    <div class="row">
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-primary" role="alert">
+                                Cantidad de fichas: <span class="badge bg-primary">{{ fichaUsuario }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <div class="alert alert-primary" role="alert">
+                                Cantidad de boletas: <span class="badge bg-primary">{{ cantidadBoleta }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-3" *ngIf="historyGame.length != 0">
+                            <div class="alert alert-danger" role="alert">
+                                <div class="text-center">
+                                    <b>Historial de atracciones montadas:</b>
+                                </div>
+                                <ul class="mt-2" *ngFor="let game of historyGame">
+                                    <li>Atracción {{ game.nombre }} - Cantidad de veces: <span class="badge bg-danger">{{ game.cantidad }}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" *ngIf="listGame.length != 0">
+                        <h5 class="card-title text-center">Atracciones</h5>
+                        <div class="col-md-12 mt-3">
+                            <label class="control-label"><b>Seleccione la atracción que desea montarse</b></label>
+                            <select class="form-select mt-2" aria-label="Default select example" [(ngModel)]="atraccion" (change)="onChangeGame($event)">
+                                <option value="" disabled>Seleccione la atracción</option>
+                                <option *ngFor="let item of listGame" value='{{ item.nombre }}'>Atraccion: {{ item.nombre }} - Cantidad de ficha:
+                                    {{ item.ficha }}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mt-3 mb-3">
+                            <div *ngIf="atraccion != ''" class="input-group">
+                                <input type="text" class="form-control" placeholder="Nombre atracción" value="{{ atraccion }}" 
+                                    aria-label="Recipient's username" disabled>
+                                <button class="btn btn-danger" type="button" (click)="rideGame()">Montarse</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

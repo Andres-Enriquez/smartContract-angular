@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "smart-contract-01": {
+      "hosting": {
+        "acuaparque": [
+          "smart-contract-01"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "smart-contract-01"
+  }
+}

@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark d-flex justify-content-end">
+    <a [routerLink]="['/atracciones']">
+        <button class="btn btn-outline-danger me-4" type="button">Atracciones</button>
+    </a>
+    <button class="btn btn-outline-light me-4" type="button" (click)="conectar()">Conectar</button>
+</nav>
+<div class="container">
+    <div class="row  mt-5 mb-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Panel de administración</h5>
+                    <div class="accordion mt-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    Agregar atracción
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <form [formGroup]="addForm">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="textName"
+                                                placeholder="Nombre de la atracción" formControlName="name" >
+                                            <label for="textName">Nombre de la atracción</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="number" class="form-control" id="textFicha"
+                                                placeholder="Cantidad de fichas" formControlName="ficha" >
+                                            <label for="textFicha">Cantidad de fichas</label>
+                                        </div>
+                                        <div class="d-grid gap-2">
+                                            <button type="button" class="btn btn-primary" (click)="addGame()" [disabled]="!addForm.valid">Crear Atracción</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Consultar balance del contrato
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="d-grid gap-2 m-3">
+                                    <button type="button" class="btn btn-danger" (click)="getBalance()">Obtener balance</button>
+                                </div>
+                                <p *ngIf="balance != 0" class="text-center"><b>{{ balance }}</b></p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Retirar dinero
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
+                                <div class="d-grid gap-2 m-3">
+                                    <button type="button" class="btn btn-success" (click)="depositAccount()">Depositar a la cuenta</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
