@@ -3,7 +3,7 @@ Es una Dapps de un parque de atracciones que permite a los clientes y al adminis
 
 ## Acciones del cliente:
 - Conectarse a la billetera
-- Comprar boleta
+- Comprar boleta (Por la compra de la boleta se le entrega 5 fichas o tokens)
 - Ver la cantidad de fichas o tokens que posee
 - Ver la cantidad de boletas que compro
 - Ver historial de atracciones que ha montado el cliente
