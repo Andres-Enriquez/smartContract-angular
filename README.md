@@ -14,6 +14,9 @@ Es una Dapps de un parque de atracciones que permite a los clientes y al adminis
 - Consultar el balance del contrato
 - Retirar dinero del contrato y enviarlo a la cuenta del propietario
 
+## Demo
+https://smart-contract-01.firebaseapp.com/
+
 ## Instalaciones necesarias
 - web3: https://www.npmjs.com/package/web3
 - web3modal: https://www.npmjs.com/package/web3modal
